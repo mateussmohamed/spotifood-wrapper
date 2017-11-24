@@ -1,6 +1,6 @@
 {
-  "name": "spotify-wrapper",
-  "version": "1.0.1",
+  "name": "mohamed-spotify-wrapper",
+  "version": "1.0.3",
   "description": "The wrapper for web api of spotify",
   "main": "lib/index.js",
   "scripts": {

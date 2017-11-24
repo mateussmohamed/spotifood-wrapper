@@ -1,5 +1,5 @@
 import { toJSON, wrapperFetch } from './utils';
-import API_URL from './config';
+import { API_URL } from './config';
 
 export const getAlbum = (id) => {
   const url = `${API_URL}/albums/${id}`;

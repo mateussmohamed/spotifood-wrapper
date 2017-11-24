@@ -1,5 +1,5 @@
 import { toJSON, wrapperFetch } from './utils';
-import API_URL from './config';
+import { API_URL } from './config';
 
 export const search = (query, type) => {
   const url = `${API_URL}/search?q=${query}&type=${type}`;

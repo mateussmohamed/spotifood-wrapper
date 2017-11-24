@@ -1,8 +1,8 @@
 {
   "name": "spotify-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The wrapper for web api of spotify",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "clear": "rimraf lib",
     "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
@@ -17,6 +17,10 @@
     "test:coverage": "nyc npm test",
     "coveralls": "npm run test:coverage && nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "nyc": {
     "functions": true,
     "lines": 80,

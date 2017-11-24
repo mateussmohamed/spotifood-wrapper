@@ -2,13 +2,12 @@
 
 export const wrapperFetch = (url) => {
   const headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQB09rCvuKzea1bQDhxLW6QdiYjpNrBBOkylte1tTtcos5O2Fr3J1xuZdeVes1Vu7snJKPoxQDsU4dpcxh9K7ff-G9KTULKdQWIalY_fN03rhfqjW0PeteUTtiRmU2GOAZIteUdaffK1YNeSi5g7SmOpRA'
+    'Accept': 'application/json', // eslint-disable-line
+    'Content-Type': 'application/json', // eslint-disable-line
+    'Authorization': 'Bearer BQAuS2Snx2Fg7SF0evqwcOLi_fwzedj1FnrNS0ov7X0I0Txt_Wwx_LBX9YCECcntUL48Jc7IUanWto1kMqaECRyDMZ0tBscNAf_WRTaqfU21XaVHBazJMWAnyF0pF4e8n3RVKIaiOK0s9xo1rmPnXXpMKA', // eslint-disable-line
   };
 
   const options = { headers };
-
   return fetch(url, options);
 };
 

@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import sinonStubPromise from 'sinon-stub-promise';
 
 import SpotifyWrapper from '../src/index';
-import { API_URL } from '../src/config';
+import API_URL from '../src/config';
 
 chai.use(sinonChai);
 sinonStubPromise(sinon);

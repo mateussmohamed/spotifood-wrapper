@@ -1,6 +1,6 @@
 {
   "name": "mohamed-spotify-wrapper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The wrapper for web api of spotify",
   "main": "lib/index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test",
-    "coveralls": "npm run test:coverage && nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "npm run test:coverage && nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm run build:all"
   },
   "files": [
     "dist",

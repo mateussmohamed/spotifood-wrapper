@@ -18,7 +18,10 @@
   <script src="../dist/spotify-wrapper.umd.js"></script>
 
   <script>
-    const albums = spotifyWrapper.searchAlbums('Post Malone');
+    const spotifyWrapper = new SpotifyWrapper({
+      token: 'BQB3dooxjB7sn6lDto2XTcMtILN6QeowUn8MDmxmtr_PxCi3fNaEUkN6WcXQVKjdx2CeepC7zRMO4digYFrjnQBrH32mfrlflvihQcg0TXpNvMfnqkEms5DdjtwQzvOOlY3acRBT5SjmorG6O5_2gnjunw'
+    })
+    const albums = spotifyWrapper.search.albums('Post Malone');
     const albumsEl = document.getElementById('albums');
 
     albums.then(data => {

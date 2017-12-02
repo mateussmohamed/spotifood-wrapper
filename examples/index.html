@@ -21,12 +21,12 @@
   <script>
     async function App() {
 
-      const SpotifoodWrapper = await SpotifoodWrapper.init({
+      const spotifood = await SpotifoodWrapper.init({
         clientID: '24db18fe385c4ddfb9eb77bd70816b21',
         clientSecret: '49013f8eddb942499b71c3257d6e177b',
       });
 
-      const albums = SpotifoodWrapper.search.albums('Post Malone');
+      const albums = spotifood.search.albums('Post Malone');
       const albumsEl = document.getElementById('albums');
 
       albums.then(data => {
@@ -44,7 +44,7 @@
         country: 'BR',
       };
 
-      const playlists = SpotifoodWrapper.browser.featuredPlaylists(filters);
+      const playlists = spotifood.browser.featuredPlaylists(filters);
 
       playlists.then(data => console.log(data))
     }

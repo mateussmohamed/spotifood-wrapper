@@ -4,39 +4,39 @@ import sinonChai from 'sinon-chai';
 import sinonStubPromise from 'sinon-stub-promise';
 
 import SpotifyWrapper from '../src/index';
-import API_URL from '../src/config';
+import { API_URL, REFRESH_TOKEN_TIME } from '../src/config';
 
 chai.use(sinonChai);
+
 sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
 describe('SpotifyWrapper Library', () => {
+  let spotifyWrapper;
+  beforeEach(() => {
+    spotifyWrapper = new SpotifyWrapper({
+      clientID: '3LK21JLK321J3',
+      clientSecret: 'LLDKAJSPOIW3214923817A',
+      refreshTokenTime: REFRESH_TOKEN_TIME,
+    });
+  });
+
   it('should create an instance of SpotifyWrapper', () => {
-    const spotifyWrapper = new SpotifyWrapper({});
     expect(spotifyWrapper).to.be.an.instanceOf(SpotifyWrapper);
   });
 
-  it('should receive apiURL as an option', () => {
-    const spotifyWrapper = new SpotifyWrapper({
-      apiURL: 'https://whatever.com',
-    });
-
-    expect(spotifyWrapper.apiURL).to.be.equal('https://whatever.com');
-  });
-
   it('should use the default apiURL if not provided', () => {
-    const spotifyWrapper = new SpotifyWrapper({});
-
     expect(spotifyWrapper.apiURL).to.be.equal(API_URL);
   });
 
-  it('should receive token as an option', () => {
-    const spotifyWrapper = new SpotifyWrapper({
-      token: 'whatever',
-    });
+  it('should use the default refreshTokenTime if not provided', () => {
+    expect(spotifyWrapper.refreshTokenTime).to.be.equal(REFRESH_TOKEN_TIME);
+  });
 
-    expect(spotifyWrapper.token).to.be.equal('whatever');
+  it('should receive clientID and clientSecret as an option', () => {
+    expect(spotifyWrapper.clientID).to.be.equal('3LK21JLK321J3');
+    expect(spotifyWrapper.clientSecret).to.be.equal('LLDKAJSPOIW3214923817A');
   });
 
   describe('Request method', () => {
@@ -53,42 +53,28 @@ describe('SpotifyWrapper Library', () => {
     });
 
     it('shoudl have request method', () => {
-      const spotifyWrapper = new SpotifyWrapper({});
       expect(spotifyWrapper.request).to.exist;
     });
 
     it('should call fetch when request', () => {
-      const spotifyWrapper = new SpotifyWrapper({
-        token: 'whatever',
-      });
-
       spotifyWrapper.request('https://whatever.com');
       expect(stubedFetch).to.have.been.calledOnce;
     });
 
     it('should call fetch with right url passed', () => {
-      const spotifyWrapper = new SpotifyWrapper({
-        token: 'whatever',
-      });
-
       spotifyWrapper.request('https://whatever.com');
       expect(stubedFetch).to.have.been.calledWith('https://whatever.com');
     });
 
-    it('sould call fetch with righ headers passed', () => {
-      const spotifyWrapper = new SpotifyWrapper({
-        token: 'whatever',
-      });
-
-      const headers = {
-        headers: {
-          Authorization: 'Bearer whatever',
+    it('should call fetch with error api', () => {
+      const mock = {
+        json() {
+          return { error: { status: 401 } };
         },
       };
-
-      spotifyWrapper.request('https://whatever.com');
-      expect(stubedFetch).to.have.been
-        .calledWith('https://whatever.com', headers);
+      promise.resolves(mock);
+      const authorization = spotifyWrapper.auth.authorization();
+      expect(authorization.resolveValue).to.be.eql({ error: { status: 401 } });
     });
   });
 });

@@ -9,28 +9,47 @@
       max-width: 200px;
       float: left;
     }
+
   </style>
 </head>
 
 <body>
   <div id="albums">Loading...</div>
 
-  <script src="../dist/spotify-wrapper.umd.js"></script>
+  <script src="dist/spotify-wrapper.umd.js"></script>
 
   <script>
-    const spotifyWrapper = new SpotifyWrapper({
-      token: 'BQB3dooxjB7sn6lDto2XTcMtILN6QeowUn8MDmxmtr_PxCi3fNaEUkN6WcXQVKjdx2CeepC7zRMO4digYFrjnQBrH32mfrlflvihQcg0TXpNvMfnqkEms5DdjtwQzvOOlY3acRBT5SjmorG6O5_2gnjunw'
-    })
-    const albums = spotifyWrapper.search.albums('Post Malone');
-    const albumsEl = document.getElementById('albums');
+    async function App() {
 
-    albums.then(data => {
-      const markup = data.albums.items.map(item =>
-        `<img src='${item.images[0].url}' alt='${item.name}' />`
-      ).join('');
+      const spotifyWrapper = await SpotifyWrapper.init({
+        clientID: '24db18fe385c4ddfb9eb77bd70816b21',
+        clientSecret: '49013f8eddb942499b71c3257d6e177b',
+      });
 
-      albumsEl.innerHTML = markup;
-    });
+      const albums = spotifyWrapper.search.albums('Post Malone');
+      const albumsEl = document.getElementById('albums');
+
+      albums.then(data => {
+        if (data.albums) {
+          const markup = data.albums.items.map(item =>
+            `<img src='${item.images[0].url}' alt='${item.name}' />`
+          ).join('');
+
+          albumsEl.innerHTML = markup;
+        }
+      });
+
+      const filters = {
+        locale: 'pt_BR',
+        country: 'BR',
+      };
+
+      const playlists = spotifyWrapper.browser.featuredPlaylists(filters);
+
+      playlists.then(data => console.log(data))
+    }
+
+    App();
 
   </script>
 </body>

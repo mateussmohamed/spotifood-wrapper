@@ -17,7 +17,8 @@ describe('Search', () => {
 
   beforeEach(() => {
     spotifyWrapper = new SpotifyWrapper({
-      token: 'foo',
+      clientID: '3LK21JLK321J3',
+      clientSecret: '3LK21JLK321J3',
     });
     fetchedStub = sinon.stub(global, 'fetch');
     promise = fetchedStub.returnsPromise();

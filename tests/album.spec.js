@@ -1,6 +1,3 @@
-// getAlbum
-// getTracks
-
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -19,7 +16,8 @@ describe('Album', () => {
 
   beforeEach(() => {
     spotifyWrapper = new SpotifyWrapper({
-      token: 'foo',
+      clientID: '3LK21JLK321J3',
+      clientSecret: '3LK21JLK321J3',
     });
     stubedFetch = sinon.stub(global, 'fetch');
     promise = stubedFetch.returnsPromise();

@@ -1,3 +1,3 @@
-# Spotify Wrapper
+# Spotifood Wrapper
 
-[![Build Status](https://travis-ci.org/mateussmohamed/spotify-wrapper.svg?branch=master)](https://travis-ci.org/mateussmohamed/spotify-wrapper) [![Coverage Status](https://coveralls.io/repos/github/mateussmohamed/spotify-wrapper/badge.svg?branch=master)](https://coveralls.io/github/mateussmohamed/spotify-wrapper?branch=master)
+[![Build Status](https://travis-ci.org/mateussmohamed/spotifood-wrapper.svg?branch=master)](https://travis-ci.org/mateussmohamed/spotifood-wrapper) [![Coverage Status](https://coveralls.io/repos/github/mateussmohamed/spotifood-wrapper/badge.svg?branch=master)](https://coveralls.io/github/mateussmohamed/spotifood-wrapper?branch=master)

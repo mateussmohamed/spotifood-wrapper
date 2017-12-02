@@ -1,14 +1,14 @@
 {
-  "name": "mohamed-spotify-wrapper",
-  "version": "1.0.6",
+  "name": "spotifood-wrapper",
+  "version": "1.0.0",
   "description": "The wrapper for web api of spotify",
   "main": "lib/index.js",
   "scripts": {
     "clear": "rimraf lib",
     "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
-    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js --watch",
-    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
+    "build:umd": "./node_modules/.bin/webpack --output-filename spotifood-wrapper.umd.js --watch",
+    "build:umd:min": "./node_modules/.bin/webpack --output-filename spotifood-wrapper.umd.min.js -p",
     "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint && npm run test:coverage",
@@ -36,19 +36,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mateussmohamed/spotify-wrapper.git"
+    "url": "git+https://github.com/mateussmohamed/spotifood-wrapper.git"
   },
   "keywords": [
     "js",
     "tdd",
-    "library"
+    "library",
+    "spotify"
   ],
   "author": "Mateus Santana <mateuss.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mateussmohamed/spotify-wrapper/issues"
+    "url": "https://github.com/mateussmohamed/spotifood-wrapper/issues"
   },
-  "homepage": "https://github.com/mateussmohamed/spotify-wrapper#readme",
+  "homepage": "https://github.com/mateussmohamed/spotifood-wrapper#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-loader": "^7.1.2",

@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import sinonStubPromise from 'sinon-stub-promise';
 
-import SpotifyWrapper from '../src/index';
+import SpotifoodWrapper from '../src/index';
 
 import { parseURL } from '../src/utils';
 
@@ -16,12 +16,12 @@ global.URL = require('url').URL;
 describe('Browser', () => {
   let fetchedStub;
   let promise;
-  let spotifyWrapper;
+  let wrapper;
 
   let filters;
 
   beforeEach(() => {
-    spotifyWrapper = new SpotifyWrapper({
+    wrapper = new SpotifoodWrapper({
       clientID: '3LK21JLK321J3',
       clientSecret: '3LK21JLK321J3',
     });
@@ -44,22 +44,22 @@ describe('Browser', () => {
 
   describe('Smoke Tests', () => {
     it('should exist the browser method', () => {
-      expect(spotifyWrapper.browser).to.exist;
+      expect(wrapper.browser).to.exist;
     });
 
     it('should exist the featuredPlaylists method', () => {
-      expect(spotifyWrapper.browser.featuredPlaylists).to.exist;
+      expect(wrapper.browser.featuredPlaylists).to.exist;
     });
   });
 
   describe('Featured Playlists', () => {
     it('should call featuredPlaylists function', () => {
-      spotifyWrapper.browser.featuredPlaylists(filters);
+      wrapper.browser.featuredPlaylists(filters);
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call featuredPlaylists when passing correct filters function', () => {
-      spotifyWrapper.browser.featuredPlaylists(filters);
+      wrapper.browser.featuredPlaylists(filters);
       const url = 'https://api.spotify.com/v1/browse/featured-playlists';
       expect(fetchedStub).to.have.been.calledWith(parseURL(url, filters));
     });

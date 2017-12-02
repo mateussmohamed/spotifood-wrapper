@@ -7,7 +7,7 @@ export default {
   output: {
     path: join(__dirname, 'examples/dist'),
     libraryTarget: 'umd',
-    library: 'SpotifyWrapper',
+    library: 'SpotifoodWrapper',
   },
   devtool: 'source-map',
   module: {

@@ -16,17 +16,17 @@
 <body>
   <div id="albums">Loading...</div>
 
-  <script src="dist/spotify-wrapper.umd.js"></script>
+  <script src="dist/spotifood-wrapper.umd.js"></script>
 
   <script>
     async function App() {
 
-      const spotifyWrapper = await SpotifyWrapper.init({
+      const SpotifoodWrapper = await SpotifoodWrapper.init({
         clientID: '24db18fe385c4ddfb9eb77bd70816b21',
         clientSecret: '49013f8eddb942499b71c3257d6e177b',
       });
 
-      const albums = spotifyWrapper.search.albums('Post Malone');
+      const albums = SpotifoodWrapper.search.albums('Post Malone');
       const albumsEl = document.getElementById('albums');
 
       albums.then(data => {
@@ -44,7 +44,7 @@
         country: 'BR',
       };
 
-      const playlists = spotifyWrapper.browser.featuredPlaylists(filters);
+      const playlists = SpotifoodWrapper.browser.featuredPlaylists(filters);
 
       playlists.then(data => console.log(data))
     }

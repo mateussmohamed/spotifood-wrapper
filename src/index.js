@@ -7,7 +7,7 @@ import search from './search';
 import { API_URL, REFRESH_TOKEN_TIME } from './config';
 import { toJSON } from './utils';
 
-class SpotifyWrapper {
+class SpotifoodWrapper {
   constructor(options) {
     this.apiURL = API_URL;
     this.refreshTokenTime = options.refreshTokenTime || REFRESH_TOKEN_TIME;
@@ -32,7 +32,7 @@ class SpotifyWrapper {
   }
 
   static async cretateInstance(options) {
-    return new SpotifyWrapper(options);
+    return new SpotifoodWrapper(options);
   }
 
   refreshToken() {
@@ -63,4 +63,4 @@ class SpotifyWrapper {
   }
 }
 
-export default SpotifyWrapper;
+export default SpotifoodWrapper;

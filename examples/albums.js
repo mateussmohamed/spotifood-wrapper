@@ -1,17 +1,17 @@
-import SpotifyWrapper from '../src/index';
+import SpotifoodWrapper from '../src/index';
 
 global.fetch = require('node-fetch');
 
-const spotifyWrapper = new SpotifyWrapper({
+const SpotifoodWrapper = new SpotifoodWrapper({
   clientID: '24db18fe385c4ddfb9eb77bd70816b21',
   clientSecret: '49013f8eddb942499b71c3257d6e177b',
 });
 
-// spotifyWrapper.auth.authorization()
+// SpotifoodWrapper.auth.authorization()
   // .then(data => console.log(data));
 
-console.log(spotifyWrapper);
+console.log(SpotifoodWrapper);
 
-// const albums = spotifyWrapper.search.albums('Post Malone');
+// const albums = SpotifoodWrapper.search.albums('Post Malone');
 
 // albums.then(data => data.albums.items.map(item => console.log(item.name)));

@@ -7,15 +7,15 @@
     "clear": "rimraf lib",
     "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
-    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js",
+    "build:umd": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.js --watch",
     "build:umd:min": "./node_modules/.bin/webpack --output-filename spotify-wrapper.umd.min.js -p",
     "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint && npm run test:coverage",
-    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
-    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
+    "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-polyfill --compilers js:babel-register",
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-polyfill --compilers js:babel-register --watch",
     "test:coverage": "nyc npm test",
-    "coveralls": "npm run test:coverage && nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls",
     "prepublish": "npm run build:all"
   },
   "files": [
@@ -68,5 +68,8 @@
     "sinon-chai": "^2.14.0",
     "sinon-stub-promise": "^4.0.0",
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

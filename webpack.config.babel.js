@@ -5,7 +5,7 @@ const include = join(__dirname, 'src');
 export default {
   entry: ['babel-polyfill', './index'],
   output: {
-    path: join(__dirname, 'examples/dist'),
+    path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
     library: 'SpotifoodWrapper',
   },

@@ -1,0 +1,19 @@
+{
+  "include": [
+    "src/**/*.js"
+  ],
+  "exclude": [
+    "dist/**",
+    "examples/**",
+    "lib/**",
+    "test/**"
+  ],
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "require": ["babel-register"],
+  "sourceMap": true,
+  "instrument": true,
+  "cache": false
+}

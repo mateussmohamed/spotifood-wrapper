@@ -13,15 +13,15 @@ sinonStubPromise(sinon);
 global.fetch = require('node-fetch');
 global.URL = require('url').URL;
 
-describe('Browser', () => {
+describe('Browser method', () => {
   let fetchedStub;
   let promise;
-  let wrapper;
+  let spotifood;
 
   let filters;
 
   beforeEach(() => {
-    wrapper = new SpotifoodWrapper({
+    spotifood = new SpotifoodWrapper({
       clientID: '3LK21JLK321J3',
       clientSecret: '3LK21JLK321J3',
     });
@@ -44,22 +44,22 @@ describe('Browser', () => {
 
   describe('Smoke Tests', () => {
     it('should exist the browser method', () => {
-      expect(wrapper.browser).to.exist;
+      expect(spotifood.browser).to.exist;
     });
 
     it('should exist the featuredPlaylists method', () => {
-      expect(wrapper.browser.featuredPlaylists).to.exist;
+      expect(spotifood.browser.featuredPlaylists).to.exist;
     });
   });
 
   describe('Featured Playlists', () => {
     it('should call featuredPlaylists function', () => {
-      wrapper.browser.featuredPlaylists(filters);
+      spotifood.browser.featuredPlaylists(filters);
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call featuredPlaylists when passing correct filters function', () => {
-      wrapper.browser.featuredPlaylists(filters);
+      spotifood.browser.featuredPlaylists(filters);
       const url = 'https://api.spotify.com/v1/browse/featured-playlists';
       expect(fetchedStub).to.have.been.calledWith(parseURL(url, filters));
     });

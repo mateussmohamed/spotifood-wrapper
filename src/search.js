@@ -1,7 +1,8 @@
 function searcher(type, query) {
   return this.request(`${this.apiURL}/search?q=${query}&type=${type}`);
 }
-export default function search() {
+
+function search() {
   return {
     artists: searcher.bind(this, 'artist'),
     albums: searcher.bind(this, 'album'),
@@ -9,3 +10,5 @@ export default function search() {
     playlists: searcher.bind(this, 'playlist'),
   };
 }
+
+export default search;

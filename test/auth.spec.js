@@ -15,7 +15,7 @@ global.fetch = require('node-fetch');
 describe('Auth method', () => {
   let stubedFetch;
   let promise;
-  const wrapper = new SpotifoodWrapper({
+  const spotifood = new SpotifoodWrapper({
     clientID: '3LK21JLK321J3',
     clientSecret: 'LLDKAJSPOIW3214923817A',
     refreshTokenTime: REFRESH_TOKEN_TIME,
@@ -31,18 +31,18 @@ describe('Auth method', () => {
 
   describe('Smoke Tests', () => {
     it('shoudl have auth method', () => {
-      expect(wrapper.auth).to.exist;
+      expect(spotifood.auth).to.exist;
     });
 
 
     it('shoudl have auth.authorization method', () => {
-      expect(wrapper.auth.authorization).to.exist;
+      expect(spotifood.auth.authorization).to.exist;
     });
   });
 
   describe('Authorization method Tests', () => {
     it('should call auth.authorization when request', () => {
-      wrapper.auth.authorization();
+      spotifood.auth.authorization();
       expect(stubedFetch).to.have.been.calledOnce;
     });
 
@@ -53,7 +53,7 @@ describe('Auth method', () => {
         },
       };
       promise.resolves(mock);
-      const authorization = wrapper.auth.authorization();
+      const authorization = spotifood.auth.authorization();
       expect(authorization.resolveValue).to.be.eql({ access_token: '4aawyAB9vmqN3uQ7FjRGTy' });
     });
   });

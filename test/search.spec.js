@@ -10,7 +10,7 @@ sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
-describe('Search', () => {
+describe('Search method', () => {
   let fetchedStub;
   let promise;
   let wrapper;

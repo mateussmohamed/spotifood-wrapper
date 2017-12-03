@@ -1,12 +1,5 @@
 {
-  "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"],
-        "node": "current"
-      }
-    }]
-  ],
+  "presets": ["env"],
   "env": {
     "mocha": true
   }

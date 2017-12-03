@@ -19,9 +19,9 @@
   <script src="dist/spotifood-wrapper.umd.js"></script>
 
   <script>
-    async function App() {
+    function App() {
 
-      const spotifood = await SpotifoodWrapper.init({
+      const spotifood = new SpotifoodWrapper({
         clientID: '24db18fe385c4ddfb9eb77bd70816b21',
         clientSecret: '49013f8eddb942499b71c3257d6e177b',
       });

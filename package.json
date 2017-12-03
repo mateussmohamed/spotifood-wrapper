@@ -1,6 +1,6 @@
 {
   "name": "spotifood-wrapper",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "The wrapper for web api of spotify",
   "main": "lib/index.js",
   "scripts": {
@@ -57,7 +57,6 @@
     "mocha": "^4.0.1",
     "node-fetch": "^1.7.3",
     "nyc": "^11.3.0",
-    "prettier-eslint": "^8.2.2",
     "rimraf": "^2.6.1",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.14.0",

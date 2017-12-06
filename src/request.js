@@ -19,5 +19,5 @@ export function request(url) {
   };
   return fetch(url, options)
     .then(toJSON)
-    .then(successOrError);
+    .then(successOrError.bind(this));
 }

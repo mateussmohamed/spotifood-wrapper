@@ -69,10 +69,5 @@ describe("Request method", () => {
       const mock = { error: { status: 401 } };
       expect(successOrError(unauthorized(mock))).to.be.true;
     });
-
-    it("should return true on call successOrError()", () => {
-      const mock = { data: [] };
-      expect(successOrError(unauthorized(mock))).to.be.false;
-    });
   });
 });

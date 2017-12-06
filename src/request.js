@@ -2,7 +2,7 @@
 import Cookies from 'js-cookie';
 import { toJSON } from './utils';
 
-export function unauthorized(resp) {
+export function unauthorized(resp = {}) {
   return resp.error && resp.error.status === 401;
 }
 

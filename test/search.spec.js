@@ -1,5 +1,5 @@
 import chai, {
-  expect
+  expect,
 } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
@@ -49,6 +49,8 @@ describe('Search method', () => {
     it('should exist the searchPlaylists method', () => {
       expect(wrapper.search.playlists).to.exist;
     });
+
+
   });
 
   describe('Search Artists', () => {

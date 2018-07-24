@@ -30,13 +30,7 @@ describe('Request method', () => {
 
     stubedFetch = sinon.stub(global, 'fetch');
     stubedFetch.resolves({
-      json() {
-        return {
-          error: {
-            status: 401,
-          },
-        };
-      },
+      json: () => ({ }),
     });
   });
 
@@ -50,26 +44,24 @@ describe('Request method', () => {
     });
   });
 
-  it('should call fetch when request', () => {
-    spotifood.request(API_URL_TOKEN);
+  describe('Request tests', () => {
+    it('should call fetch when request', () => {
+      spotifood.request(API_URL_TOKEN);
 
-    expect(stubedFetch).to.have.been.calledOnce;
-  });
+      expect(stubedFetch).to.have.been.calledOnce;
+    });
 
-  it('should call fetch with right url passed', () => {
-    spotifood.request(API_URL_TOKEN);
+    it('should call fetch with right url passed', () => {
+      spotifood.request(API_URL_TOKEN);
 
-    expect(stubedFetch).to.have.been.calledWith(API_URL_TOKEN);
-  });
+      expect(stubedFetch).to.have.been.calledWith(API_URL_TOKEN);
+    });
 
-  it('should call fetch with error api', () => {
-    const authorization = spotifood.auth.authorization();
+    it('should call fetch with error api', () => {
+      const authorization = spotifood.auth.authorization();
 
-    authorization.then((data) => {
-      expect(data).to.be.eql({
-        error: {
-          status: 401,
-        },
+      authorization.then((data) => {
+        expect(data).to.be.eql({});
       });
     });
   });
@@ -91,6 +83,7 @@ describe('Request method', () => {
           status: 401,
         },
       };
+
       expect(successOrError(unauthorized(mock))).to.be.true;
     });
   });

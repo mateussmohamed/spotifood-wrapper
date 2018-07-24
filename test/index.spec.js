@@ -1,14 +1,10 @@
 import chai, { expect } from 'chai';
-import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import sinonStubPromise from 'sinon-stub-promise';
 
 import SpotifoodWrapper from '../src/index';
 import { API_URL, REFRESH_TOKEN_TIME } from '../src/config';
 
 chai.use(sinonChai);
-
-sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
@@ -19,7 +15,6 @@ describe('SpotifoodWrapper Library', () => {
       clientID: '3LK21JLK321J3',
       clientSecret: 'LLDKAJSPOIW3214923817A',
     });
-
   });
 
   it('should create an instance of spotifood', () => {

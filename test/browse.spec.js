@@ -1,21 +1,18 @@
 import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import sinonStubPromise from 'sinon-stub-promise';
 
 import SpotifoodWrapper from '../src/index';
 
 import { parseURL } from '../src/utils';
 
 chai.use(sinonChai);
-sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 global.URL = require('url').URL;
 
 describe('Browse method', () => {
   let fetchedStub;
-  let promise;
   let spotifood;
 
   let filters;
@@ -35,7 +32,7 @@ describe('Browse method', () => {
     };
 
     fetchedStub = sinon.stub(global, 'fetch');
-    promise = fetchedStub.returnsPromise();
+    fetchedStub.resolves({ json: () => {} });
   });
 
   afterEach(() => {
@@ -55,12 +52,15 @@ describe('Browse method', () => {
   describe('Featured Playlists', () => {
     it('should call featuredPlaylists function', () => {
       spotifood.browse.featuredPlaylists(filters);
+
       expect(fetchedStub).to.have.been.calledOnce;
     });
 
     it('should call featuredPlaylists when passing correct filters function', () => {
       spotifood.browse.featuredPlaylists(filters);
+
       const url = 'https://api.spotify.com/v1/browse/featured-playlists';
+
       expect(fetchedStub).to.have.been.calledWith(parseURL(url, filters));
     });
   });
